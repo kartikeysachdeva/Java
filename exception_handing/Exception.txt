@@ -1,0 +1,329 @@
+Run time errors in JAVA are known as exceptions.
+System error messages are those which are unable 
+to understand by end user or client.
+• User friendly messages are those which are 
+understandable by end user or client.
+
+
+
+Errors are of two types.
+ They are compile time errors and run time errors.
+
+Compile time errors are those which are 
+occurring because of poor understanding of the language.
+
+Run time errors are those which are occurring 
+in a program when the user inputs invalid data.
+
+The run time errors must be always 
+converted by the JAVA programmer into user
+ friendly messages by using the concept of 
+ exceptional handling.
+
+
+Types of exceptions:
+	predefined exceptions
+	custom defined exceptions.
+
+Predefined exceptions are those which are 
+developed by SUN micro system and supplied as a
+ part of JDK to deal with universal problems.
+
+Some of the universal problems
+
+	Dividing by 0
+	invalid format of a number.
+	invalid bounce of array
+
+
+Predefined Exception is divided in to two
+
+Asynchronous Exception
+	-(hardware Problems)
+
+Synchronous Exception
+	-(Programattic Errors)
+
+
+
+Synchronous Exception is divided in to 
+
+	Checked Exception(Compile time Error)
+		-Class not found
+		-interface not found
+		
+	unChecked Exception(Runtime Error)
+
+
+
+ASynchronous Exception
+----------------------
+	Asynchronous exceptions are those which are
+	 always deals with hardware problems. 
+	 In order to deal with asynchronous exceptions 
+	 there is a predefined class called java.lang.Error.
+	  java.lang.Error is super class of all 
+	  synchronous Exception.
+
+
+
+Synchronous Exception
+	Synchronous exceptions are one which always 
+	deals with programmatic errors.
+	 In order to deal with synchronous exceptions
+	  we must use a predefined  class
+	   called java.lang.Exception class.
+
+java.lang.Exception is the super class for 
+all divided into two types.
+ They are checked exceptions 
+
+i. A checked exception is one which found and 
+interface not found.
+ii. Unchecked exceptions are those which are always deals with programmatic run time errors such as ArithmeticException, NumberFormatException, ArrayIndexOutOfBoundsException
+
+
+An exception is an object which occurs at run time 
+which describes the nature of the message.
+
+
+The nature of the message can be either
+ system error message or user friendly message.
+
+
+
+
+How an EXCEPTION OCCURS
+
+1. Whenever we pass irrelevant input to a JAVA program,
+ JVM cannot process the irrelevant input.
+
+2. Since JVM is unable to process by user input,
+ hence it can contact to JRE for getting an appropriate
+  exception class.
+  
+
+3. JRE contacts to java.lang.Throwable
+ for finding what type of Exception it is 
+
+4. java.lang.Throwable decides 
+what type of exception it is and 
+pass the message to JRE.
+
+
+
+5. JRE pass the type of exception to JAVA API.
+
+6. From the JAVA API either
+ java.lang.Error class 
+ or java.lang.Exception class 
+ will found an appropriate sub class exception.
+
+7. Either java.lang.Error class
+ or java.lang.Exception class gives 
+ an appropriate exception class to JRE.
+
+8. JRE will give an appropriate exception class to 
+JVM.
+
+9. JVM will create an object of
+ appropriate exception class whi
+generates system error message.
+
+10. In order to make the program
+ very strong (robust), 
+ JAVA programmer must convert the
+  system error messages into 
+  user friendly messages by using the
+   concept of exceptional handling.
+
+User friendly messages are 
+understand by normal user 
+effectively hence our program is robust.
+
+
+HIERARCHY
+java.class.Object  - super class for all JAVA class’s.
+
+
+Syntax:
+======
+	In order  to handle the exception in JAVA we must  use the following keywords.They are try,catch,finally,throws,throw.
+
+try
+{
+Block of statements which are to be monitored by JVM at run time (or
+problematic errors);
+}
+
+
+catch (Type_of_exception1 object1)
+{
+Block of statements which provides user friendly messages;
+}
+
+catch (Type_of_exception2 object2)
+{
+Block of statements which provides user friendly messages;
+}
+
+
+catch (Type_of_exception3 object3)
+{
+Block of statements which provides user friendly messages;
+}
+
+finally
+{
+Block of statements which releases the resources;
+}
+
+
+
+Try Block
+========
+
+1. This is the block in which we write the block of statements which are to be monitored by JVM at run time i.e., try block must contain those statements which causes problems at run time.
+
+2. If any exception is taking place the control will be jumped automatically to appropriate catch block.
+
+3. If any exception is taking place in try block execution will be terminated and the rest of the statements in try block will not be executed at all and the control will go to catch block.
+
+4. For every try block we must have at least one catch block. It is highly recommended to write ‘n’ number of catch’s for ‘n’ number of problematic statements.
+
+
+Catch block:
+===========
+1. This is used for providing user friendly messages by catching system error messages.
+
+2. In the catch we must declare an object of the appropriate execution class and it will be internally referenced JVM whenever the appropriate situation taking place.
+
+3. If we write ‘n’ number of catch’s as a part of JAVA program then only one catch will be executing at any point.
+
+4. After executing appropriate catch block even if we use return statement in the catch block the control never goes to try block.
+
+Finally block:
+===========
+1. This is the block which is executing compulsory whether the exception is taking place or not.
+
+2. This block contains same statements which releases the resources which are obtained in try block (resources are opening files, opening databases, etc.).
+
+3. Writing the finally block is optional.
+
+
+
+Throws block
+============
+
+This is the keyword which gives an indication to the calling function to keep the called function under try and catch blocks.
+
+
+Syntax:
+<Return type> method name (number of parameters if any) throws type of exception1,type of exception2,………type of exception;
+
+
+
+(CALLED FUNCTION)
+package ep;
+public class Ex2
+{
+public void div (String s1, String s2) throws ArithmeticException, NumberFormatException
+{
+int n1=Integer.parseInt (s1);
+int n2=Integer.parseInt (s2);
+int n3=n1/n2;
+System.out.println ("DIVISOIN = "+n3);
+}
+};
+
+
+
+(CALLING FUNCTION)
+import ep.Ex2;
+class Ex3
+{
+public static void main (String [] args)
+{
+try
+{
+String s1=args [0];
+String s2=args [1];
+Ex2 eo=new Ex2 ();
+eo.div (s1,s2);
+}
+catch (ArithmeticException Ae)
+{
+System.out.println ("DONT ENTER ZERO FOR DENOMINATOR");
+}
+catch (NumberFormatException Nfe)
+{
+System.out.println ("PASS INTEGER VALUES ONLY");
+}
+catch (ArrayIndexOutOfBoundsException Aioobe)
+{
+System.out.println ("PASS VALUES FROM COMMAND PROMPT");
+}
+}
+};
+
+
+
+
+
+
+Number of ways to find details of the exception:
+=========================================
+In JAVA there are three ways to find the details of the exception. They are using an object of java.lang.Exception class, using public void printStackTrace method and using public string getMessage method.
+
+i. Using an object of java.lang.Exception: An object of Exception class prints the name of the exception and nature of the message.
+
+For example:
+try
+{
+int x=Integer.parseInt ("10x");
+}
+catch (Exception e)
+{
+System.out.println (e); // java.lang.NumberFormatException : for input string 10x
+}
+
+
+
+
+
+
+Using printStackTrace method:
+=========================
+
+ This is the method which is defined in java.lang.Throwable class
+and it is inherited into java.lang.Error class and java.lang.Exception class. This method will display name of the exception, nature of the message and line number where the exception has taken place.
+
+For example:
+
+try
+{
+......;
+int x=10/0;
+......;
+}
+catch (Exception e)
+{
+e.printStackTrace (); // java.lang.ArithmeticException : / by zero : at line no: 4
+}
+
+
+
+Using getMessage method: This is also a method which is defined in java.lang.Throwable class
+and it is inherited into both Error and Exception classes. This method will display only nature of
+the message.
+For example:
+try
+{
+......;
+int x=10/0;
+......;
+}
+catch (Exception e)
+{
+System.out.println (e.getMessage ()); // / by zero
+} nature of the message

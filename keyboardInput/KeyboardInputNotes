@@ -1,0 +1,53 @@
+1.How can i read the input from user using keyboard?
+
+Scanner Class.
+
+Package: java.util.*;
+
+
+2.How can we convert the one data type to another data type?
+
+float-------->int  -- ok
+
+double-------float -- ok
+
+int--------- float  -- not ok
+
+
+ typecasting.
+
+ eg: number1=(int) sc.nextFloat();
+ 
+ Limitation: 
+ read int  -> nextInt()
+ read double -> nextDouble()
+ 
+ Assignment 1
+ -----------
+ I need the correct method for each data type
+ 
+ int - ???
+ float --??
+ double--??
+ long--??
+ short int --??
+ byte---???
+ 
+ 
+ Assignment 2
+ -------------
+ Refer Java Scanner Word document.
+ 
+ 
+ 
+ 
+ BufferReader Class
+ ------------------
+ 
+ java.io
+ 
+  read a complete line.
+  
+   throws IOException - Exception class of Input and Output operation
+ 
+ 

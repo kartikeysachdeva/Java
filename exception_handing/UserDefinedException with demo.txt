@@ -1,0 +1,177 @@
+
+Exception Handling
+-------------------------
+        - Runtime Error --- it is not checked by compiler at compilation time.
+
+
+try
+catch
+finally
+throw
+throws.
+
+some exception
+divide by 0
+Input mismatch Exception
+
+
+- show customized messages------How to do it...
+
+Userdefined Exception
+
+
+
+
+
+
+
+
+
+
+What is Userdefined Exception ?
+-----------------------------------------
+ - To show custom message to end user.
+
+
+How to create?
+        3 steps to be followed to create ur custom Exception.
+
+
+Step1:
+======
+We have to extend the Exception Class.
+
+public class UserDefinedException extends Exception {
+ 
+ }
+
+
+
+step 2
+=====
+
+
+However, if you want to show some custom message to the end user when any kind of exception occurs then you might need to do a little extra work.
+
+
+
+1) Provide parameterize constructor
+2) Override toString() method.
+
+
+
+
+One parameter constructor takes the custom message .
+
+toString() method will display that custom message.
+
+
+
+Demo code
+
+
+
+package com.techm.userdefinedException;
+
+public class UserDefinedException extends Exception {
+
+private static final long serialVersionUID = 1L;
+String msg;
+		
+/**
+ * Provide one parameter constructor and override toString() method
+ */
+		
+		
+// parameterised constrcutor to read the custom message
+		
+UserDefinedException(String msg)
+{
+	this.msg=msg;
+}
+
+//to display the message
+		
+public String toString()
+{
+return this.msg;
+}	
+		
+}
+
+
+
+
+main code
+package com.techm.userdefinedException;
+
+public class Test {
+
+	public static void main(String[] args) {
+	try{
+			
+	// throw is used to throw userdefined exception with custom message.
+throw new UserDefinedException("Custom message from the class"); 
+			
+}
+catch(Exception e)
+{
+	
+System.out.println(e);
+}
+}
+
+}
+
+
+
+---------------------------------------------------------------------------
+Demo 2
+----------
+
+package com.techm.userdefinedException;
+public class AgeException extends Exception {
+	private  int age;
+	AgeException(int age)
+	{
+		this.age=age;
+	}
+	public String toString()
+	{
+		return" Please Enter a valid age"+age;
+	}
+}
+
+
+Test2.java
+
+package com.techm.userdefinedException;
+
+public class Test2 {
+	public static void main(String[] args) {
+		int age=-12;
+		if(age<0)
+		{ 
+			try {
+			throw new AgeException(age);
+								
+			} catch (AgeException e) {
+				
+			e.printStackTrace();
+			}
+			
+		}
+		
+		else
+		{
+			System.out.println("Your age is"+age);
+		}
+		
+		
+
+	}
+
+}
+
+
+----------------------------------------------------------------------------------------------
